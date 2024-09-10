@@ -1,0 +1,32 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size();
+        int n = nums2.size();
+        int total = m + n;
+        int mid = total / 2;
+
+        // Two pointers for merging the arrays
+        int i = 0, j = 0;
+        int prev = 0, curr = 0;
+        
+        // Loop through the merged array until the middle point
+        for (int count = 0; count <= mid; count++) {
+            prev = curr;
+
+            if (i < m && (j >= n || nums1[i] <= nums2[j])) {
+                curr = nums1[i++];
+            } else {
+                curr = nums2[j++];
+            }
+        }
+
+        // If the total number of elements is odd, return the middle one
+        if (total % 2 == 1) {
+            return curr;
+        }
+        
+        // If the total is even, return the average of the two middle numbers
+        return (prev + curr) / 2.0;
+    }
+};
