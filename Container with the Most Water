@@ -23,3 +23,24 @@ public:
 
     }
 };
+
+/*Why the Minimum?
+If we were to take the taller line's height, we'd be overestimating the capacity because the water cannot go higher than the shortest line. Imagine if you have one tall wall and one short wall — the water can only fill up to the height of the shorter wall.
+By taking the minimum height, you ensure that the computed area reflects the actual maximum level the water can reach between those two lines.
+Example:
+If height[left] = 5 and height[right] = 3, the water can only reach a height of 3 (the shorter of the two). So, the area would be:
+
+Area
+=
+3
+×
+(
+right
+−
+left
+)
+Area=3×(right−left)
+Even though one line is taller, the limiting factor is the shorter one.
+
+That's why we take the minimum of the two heights to accurately compute the maximum area of water that can be trapped.
+*/
