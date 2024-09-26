@@ -1,3 +1,22 @@
+### Problem: Container With Most Water
+
+Given an array `height` where each element represents the height of a vertical line drawn at that index, the goal is to find two lines that, together with the x-axis, form a container that holds the most water. You need to return the maximum area of water the container can hold.
+
+### Approach: Two Pointer Technique
+
+- **Key Idea**: Use two pointers, one starting at the beginning (`left`) and one at the end (`right`) of the array. The area between these two lines is determined by the shorter line, as water can't rise above the shorter wall.
+- **Steps**:
+  1. Initialize two pointers (`left` and `right`) at the start and end of the array.
+  2. Compute the area as `min(height[left], height[right]) * (right - left)`.
+  3. Move the pointer pointing to the shorter line inward, as it might help in finding a taller line to maximize the area.
+  4. Repeat until the two pointers meet.
+### Time Complexity:
+- **O(n)** where `n` is the number of elements in the `height` array (since we only loop through the array once).
+
+
+
+
+///////////////////////////////////////////////////////////
 ### **Median of the Two Sorted Arrays**
 This code defines a C++ class `Solution` with a method `findMedianSortedArrays` that finds the median of two sorted arrays `nums1` and `nums2`. Here's a breakdown of how the code works:
 
