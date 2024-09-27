@@ -5,26 +5,6 @@ There are a few issues in your code that need to be addressed:
 2. **Size of `temp`**: The `temp` vector is not initialized with any size, so you cannot directly assign elements to it at specific indices.
 3. **Return value**: The size of the `temp` vector is returned, but this won't modify the original `nums` array in place, which is typically expected in problems like this.
 
-Here’s a corrected version of the code:
-
-```cpp
-class Solution {
-public:
-    int removeDuplicates(vector<int>& nums) {
-        if (nums.empty()) return 0;  // Handle edge case of empty vector
-
-        int k = 1; // We start from index 1 since the first element is always unique
-        for (int i = 1; i < nums.size(); i++) {
-            if (nums[i] != nums[i - 1]) {
-                nums[k++] = nums[i];  // Place the next unique element in nums
-            }
-        }
-
-        return k;  // 'k' is the number of unique elements
-    }
-};
-```
-
 ### Explanation:
 1. **Edge case**: If `nums` is empty, we return 0 right away.
 2. **Unique element tracking**: The first element is always unique, so we start from index 1 (`k = 1`). Then, as we loop through the array, if an element differs from the previous one (`nums[i] != nums[i - 1]`), it is a unique element, and we store it at `nums[k]` and increment `k`.
