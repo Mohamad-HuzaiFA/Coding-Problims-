@@ -1,3 +1,39 @@
+### Problem: Remove Duplicates from Sorted Array
+There are a few issues in your code that need to be addressed:
+
+1. **Initial assignment to `temp[k]`**: You are assigning elements to the `temp` vector without allocating memory for it.
+2. **Size of `temp`**: The `temp` vector is not initialized with any size, so you cannot directly assign elements to it at specific indices.
+3. **Return value**: The size of the `temp` vector is returned, but this won't modify the original `nums` array in place, which is typically expected in problems like this.
+
+Here’s a corrected version of the code:
+
+```cpp
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) return 0;  // Handle edge case of empty vector
+
+        int k = 1; // We start from index 1 since the first element is always unique
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[k++] = nums[i];  // Place the next unique element in nums
+            }
+        }
+
+        return k;  // 'k' is the number of unique elements
+    }
+};
+```
+
+### Explanation:
+1. **Edge case**: If `nums` is empty, we return 0 right away.
+2. **Unique element tracking**: The first element is always unique, so we start from index 1 (`k = 1`). Then, as we loop through the array, if an element differs from the previous one (`nums[i] != nums[i - 1]`), it is a unique element, and we store it at `nums[k]` and increment `k`.
+3. **In-place modification**: This algorithm modifies the input array `nums` in place and returns the number of unique elements (`k`).
+
+The time complexity is O(n), where n is the size of the array.
+
+
+///////////////////////////////////////////////
 ### Problem: Container With Most Water
 
 Given an array `height` where each element represents the height of a vertical line drawn at that index, the goal is to find two lines that, together with the x-axis, form a container that holds the most water. You need to return the maximum area of water the container can hold.
