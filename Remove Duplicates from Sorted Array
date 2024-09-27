@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) return 0;  // Handle edge case of empty vector
+
+        int k = 1; // We start from index 1 since the first element is always unique
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[k++] = nums[i];  // Place the next unique element in nums
+            }
+        }
+
+        return k;  // 'k' is the number of unique elements
+    }
+};
