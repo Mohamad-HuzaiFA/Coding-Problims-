@@ -1,0 +1,22 @@
+#include <iostream>
+#include <numeric>  // for std::gcd
+
+// Function to calculate the Least Common Multiple (LCM) of two numbers
+long long lcm(long long a, long long b) {
+    return (a * b) / std::gcd(a, b);
+}
+
+// Function to find the LCM of all numbers from 1 to n
+long long lcm_range(int n) {
+    long long result = 1;
+    for (int i = 2; i <= n; i++) {
+        result = lcm(result, i);
+    }
+    return result;
+}
+
+int main() {
+    int n = 20;
+    std::cout << "The smallest number divisible by all numbers from 1 to " << n << " is: " << lcm_range(n) << std::endl;
+    return 0;
+}
