@@ -1,0 +1,24 @@
+class Solution(object):
+    def nextPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        ind = n-2
+        while ind>=0 and nums[ind] >= nums[ind+1]:
+            ind = ind -1
+
+        if ind >= 0:
+            j = n-1
+            while nums[j] <= nums[ind]:
+                j = j-1
+
+            nums[ind],nums[j] = nums[j],nums[ind]
+
+        nums[ind+1:] = reversed(nums[ind+1:])
+
+
+
+
+        
