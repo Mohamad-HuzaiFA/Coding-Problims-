@@ -1,0 +1,14 @@
+SELECT  
+    COUNT(Jobs.Id) AS Job_Offers
+FROM 
+    Students
+LEFT JOIN 
+    Jobs 
+ON 
+    Students.Id = Jobs.Id
+AND 
+    MONTH(Jobs.Date) = 11   -- Assuming Jobs table has an Offer_Date column
+GROUP BY 
+    Students.Id
+ORDER BY 
+    Students.Id;
